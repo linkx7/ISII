@@ -91,5 +91,10 @@ namespace ISII
             txtApellido.Text = dgMedicos.CurrentRow.Cells[2].Value.ToString();
             txtEspecialidad.Text = dgMedicos.CurrentRow.Cells[3].Value.ToString();
         }
+
+        private void RegistrarHorario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

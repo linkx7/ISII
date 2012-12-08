@@ -175,7 +175,7 @@ namespace DAT
         public DataTable listarTurnos(DateTime dtFecha)
         {
             conexionS();
-            string SentenciaSQL = "SELECT h.fecha as 'Fecha', h.hora as 'Hora', e.nombreespecialidad as 'Especialidad' ,m.nombresMedico as 'Nombres',m.apellidosMedico as 'Apellido' from MEDICO m JOIN ESPECIALIDAD e on e.IDESPECIALIDAD=m.IDESPECIALIDAD join HORARIO h on h.IDMEDICO=m.IDMEDICO where h.estado='Disponible'and h.FECHA ='" + dtFecha + "'";
+            string SentenciaSQL = "SELECT h.idhorario, h.fecha as 'Fecha', h.hora as 'Hora', e.nombreespecialidad as 'Especialidad' ,m.nombresMedico as 'Nombres',m.apellidosMedico as 'Apellido' from MEDICO m JOIN ESPECIALIDAD e on e.IDESPECIALIDAD=m.IDESPECIALIDAD join HORARIO h on h.IDMEDICO=m.IDMEDICO where h.estado='Disponible'and h.FECHA ='" + dtFecha + "'";
             DataTable consulta = new DataTable("Turnos");
             var objAdapter = new SqlDataAdapter(SentenciaSQL, sqlCone);
             objAdapter.Fill(consulta);
@@ -184,6 +184,14 @@ namespace DAT
         }
 
 
+        public void actualizarHorario(int idHorario)
+        {
+            conexionS();
+            SqlCommand SentenciaSQL =new SqlCommand( "Update horario set estado='ocupado' where idhorario=@idHorario", sqlCone);
+            SentenciaSQL.Parameters.AddWithValue("idHorario",idHorario);
+            SentenciaSQL.ExecuteNonQuery();
+            
+        }
 
         //public DataSet obtenerHorario(DateTime dtFecha)
         //{

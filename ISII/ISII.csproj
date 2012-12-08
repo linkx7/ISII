@@ -52,6 +52,12 @@
     <Compile Include="AsignarTurno.Designer.cs">
       <DependentUpon>AsignarTurno.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarMedico.Designer.cs">
+      <DependentUpon>ConsultarMedico.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrearHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     <Compile Include="Validaciones.cs" />
     <EmbeddedResource Include="AsignarTurno.resx">
       <DependentUpon>AsignarTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMedico.resx">
+      <DependentUpon>ConsultarMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearHistoriaClinica.resx">
       <DependentUpon>CrearHistoriaClinica.cs</DependentUpon>

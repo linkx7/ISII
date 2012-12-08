@@ -28,15 +28,23 @@ namespace ISII
             //Llenar HL
             HistoriaClinica hl = new HistoriaClinica();
             hl.IdPaciente = idCedula;
-            hl.StrTipoSangre = txtTipoSangre.Text;
+            hl.StrTipoSangre = Convert.ToString(cmbTipo.SelectedItem);
             hl.StrAlergia = txtAlergias.Text;
             hl.insertarHistoria();
         }
 
         private void txtCedula_Enter(object sender, EventArgs e)
         {
-            string strCedu = Convert.ToString(txtCedula.Text);
-            txtNombres.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1])+ Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);
+            
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                string strCedu = Convert.ToString(txtCedula.Text);
+                txtNombres.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]) +" "+ Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);
+            }
         }
     }
 }

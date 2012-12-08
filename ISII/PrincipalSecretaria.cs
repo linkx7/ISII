@@ -62,5 +62,11 @@ namespace ISII
             RegistrarHorario registrarHorario = new RegistrarHorario();
             registrarHorario.Show();
         }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarMedico consultarMedico = new ConsultarMedico();
+            consultarMedico.Show();
+        }
     }
 }

@@ -35,22 +35,21 @@
             this.lblEspecialidad = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgTurnosDisponibles = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtHora = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.cmbHora = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.txtTurno = new System.Windows.Forms.TextBox();
             this.lblFechaActual = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
-            this.dgTurnosDisponibles = new System.Windows.Forms.DataGridView();
-            this.txtHora = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnosDisponibles)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -122,6 +121,16 @@
             this.groupBox2.Text = "Turnos";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // dgTurnosDisponibles
+            // 
+            this.dgTurnosDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTurnosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTurnosDisponibles.Location = new System.Drawing.Point(9, 19);
+            this.dgTurnosDisponibles.Name = "dgTurnosDisponibles";
+            this.dgTurnosDisponibles.Size = new System.Drawing.Size(380, 116);
+            this.dgTurnosDisponibles.TabIndex = 0;
+            this.dgTurnosDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTurnosDisponibles_CellContentClick);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -135,7 +144,6 @@
             // 
             this.groupBox3.Controls.Add(this.txtHora);
             this.groupBox3.Controls.Add(this.txtApellido);
-            this.groupBox3.Controls.Add(this.cmbHora);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.txtTurno);
             this.groupBox3.Controls.Add(this.lblFechaActual);
@@ -150,6 +158,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Paciente";
             // 
+            // txtHora
+            // 
+            this.txtHora.Location = new System.Drawing.Point(243, 82);
+            this.txtHora.Name = "txtHora";
+            this.txtHora.ReadOnly = true;
+            this.txtHora.Size = new System.Drawing.Size(131, 20);
+            this.txtHora.TabIndex = 14;
+            // 
             // txtApellido
             // 
             this.txtApellido.Enabled = false;
@@ -157,22 +173,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(135, 20);
             this.txtApellido.TabIndex = 13;
-            // 
-            // cmbHora
-            // 
-            this.cmbHora.FormattingEnabled = true;
-            this.cmbHora.Items.AddRange(new object[] {
-            "08h00",
-            "10h00",
-            "12h00",
-            "14h00",
-            "16h00",
-            "18h00",
-            "20h00"});
-            this.cmbHora.Location = new System.Drawing.Point(243, 25);
-            this.cmbHora.Name = "cmbHora";
-            this.cmbHora.Size = new System.Drawing.Size(134, 21);
-            this.cmbHora.TabIndex = 12;
             // 
             // button2
             // 
@@ -226,26 +226,7 @@
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(114, 20);
             this.txtCedula.TabIndex = 5;
-            this.txtCedula.Enter += new System.EventHandler(this.txtCedula_Enter);
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
-            // 
-            // dgTurnosDisponibles
-            // 
-            this.dgTurnosDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgTurnosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTurnosDisponibles.Location = new System.Drawing.Point(9, 19);
-            this.dgTurnosDisponibles.Name = "dgTurnosDisponibles";
-            this.dgTurnosDisponibles.Size = new System.Drawing.Size(380, 116);
-            this.dgTurnosDisponibles.TabIndex = 0;
-            this.dgTurnosDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTurnosDisponibles_CellContentClick);
-            // 
-            // txtHora
-            // 
-            this.txtHora.Location = new System.Drawing.Point(243, 82);
-            this.txtHora.Name = "txtHora";
-            this.txtHora.ReadOnly = true;
-            this.txtHora.Size = new System.Drawing.Size(131, 20);
-            this.txtHora.TabIndex = 14;
             // 
             // AsignarTurno
             // 
@@ -261,9 +242,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgTurnosDisponibles)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTurnosDisponibles)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,7 +266,6 @@
         private System.Windows.Forms.DateTimePicker dtFecha;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox cmbHora;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.DataGridView dgTurnosDisponibles;
         private System.Windows.Forms.TextBox txtHora;

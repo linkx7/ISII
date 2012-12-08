@@ -38,9 +38,10 @@
             this.registrarHojaDeAtencionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.médicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarHorarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarHorarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +116,8 @@
             // 
             this.médicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarMédicoToolStripMenuItem,
-            this.registrarHorarioToolStripMenuItem});
+            this.registrarHorarioToolStripMenuItem,
+            this.consultarToolStripMenuItem});
             this.médicoToolStripMenuItem.Name = "médicoToolStripMenuItem";
             this.médicoToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.médicoToolStripMenuItem.Text = "Médico";
@@ -126,6 +128,13 @@
             this.registrarMédicoToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.registrarMédicoToolStripMenuItem.Text = "Registrar Médico";
             this.registrarMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarMédicoToolStripMenuItem_Click);
+            // 
+            // registrarHorarioToolStripMenuItem
+            // 
+            this.registrarHorarioToolStripMenuItem.Name = "registrarHorarioToolStripMenuItem";
+            this.registrarHorarioToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.registrarHorarioToolStripMenuItem.Text = "Registrar Horario";
+            this.registrarHorarioToolStripMenuItem.Click += new System.EventHandler(this.registrarHorarioToolStripMenuItem_Click);
             // 
             // especialidadToolStripMenuItem
             // 
@@ -138,16 +147,16 @@
             // registrarToolStripMenuItem
             // 
             this.registrarToolStripMenuItem.Name = "registrarToolStripMenuItem";
-            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.registrarToolStripMenuItem.Text = "Registrar";
             this.registrarToolStripMenuItem.Click += new System.EventHandler(this.registrarToolStripMenuItem_Click);
             // 
-            // registrarHorarioToolStripMenuItem
+            // consultarToolStripMenuItem
             // 
-            this.registrarHorarioToolStripMenuItem.Name = "registrarHorarioToolStripMenuItem";
-            this.registrarHorarioToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.registrarHorarioToolStripMenuItem.Text = "RegistrarHorario";
-            this.registrarHorarioToolStripMenuItem.Click += new System.EventHandler(this.registrarHorarioToolStripMenuItem_Click);
+            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.consultarToolStripMenuItem.Text = "Consultar";
+            this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
             // PrincipalSecretaria
             // 
@@ -183,5 +192,6 @@
         private System.Windows.Forms.ToolStripMenuItem especialidadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarHorarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
     }
 }

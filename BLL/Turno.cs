@@ -72,7 +72,9 @@ namespace BLL
                 objConexion.conexionS();
                 objConexion.insertarTurno(idPaciente,dtFechaAsignada,strHoraAsignada,dtFechaEmisionComprobante);
             }
-            catch (Exception ex) { throw ex; }
+            catch (Exception ex) {
+                Console.WriteLine("Ni vergas");
+            }
 
         }
 

@@ -111,7 +111,7 @@ namespace ISII
             {
 
                 SqlCommand insertarMedico =
-                new SqlCommand("insert into MEDICO (IDESPECIALIDAD,CODIGOMEDICO,EXTMEDICO,CEDULAMEDICO,NOMBRESMEDICO,APELLIDOSMEDICO,DIRECCIONMEDICO,ESTADOCIVILMEDICO,EMAILMEDICO,SEXOMEDICO) values (@idEsp,@cod,@ext,@cedula,@nombres,@apellidos,@direccion,@estadoC,@email,@sexo)", conexionBDD);
+                new SqlCommand("insert into MEDICO (IDESPECIALIDAD,CODIGOMEDICO,EXTMEDICO,CEDULAMEDICO,NOMBRESMEDICO,APELLIDOSMEDICO,DIRECCIONMEDICO,ESTADOCIVILMEDICO,EMAILMEDICO,SEXOMEDICO,ESTADOMEDICO) values (@idEsp,@cod,@ext,@cedula,@nombres,@apellidos,@direccion,@estadoC,@email,@sexo,@estadoMedico)", conexionBDD);
                 insertarMedico.Parameters.AddWithValue("cod", medico.StrCodigoMedico);
                 insertarMedico.Parameters.AddWithValue("ext", medico.extensionMedico);
                 insertarMedico.Parameters.AddWithValue("nombres", medico.strNombresMedico);
@@ -122,7 +122,7 @@ namespace ISII
                 insertarMedico.Parameters.AddWithValue("sexo", medico.strSexoMedico);
                 insertarMedico.Parameters.AddWithValue("cedula", medico.strCedulaMedico);
                 insertarMedico.Parameters.AddWithValue("idEsp", especialidad.IdEspecialidad);
-
+                insertarMedico.Parameters.AddWithValue("estadoMedico", "Disponible");
                 insertarMedico.ExecuteNonQuery();
                 MessageBox.Show("Médico registrado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -153,6 +153,27 @@ namespace ISII
             objAdapter.SelectCommand.CommandText = SentenciaSQL;
             return consulta;
         }
+
+        public void eliminarMedico(int idMedico)
+        {
+
+            try
+            {
+                SqlCommand eliminarMedico =
+                new SqlCommand("delete from MEDICO where idMedico=@idMedico", conexionBDD);
+                eliminarMedico.Parameters.AddWithValue("idMedico", idMedico);
+
+                eliminarMedico.ExecuteNonQuery();
+                MessageBox.Show("Medico Eliminado!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException Ex)
+            {
+                MessageBox.Show("Error no se elimino el medico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
 
     }
 }

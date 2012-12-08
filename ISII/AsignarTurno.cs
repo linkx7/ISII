@@ -14,26 +14,26 @@ namespace ISII
     public partial class AsignarTurno : Form
     {
         Conexion conID = new Conexion();
+        int idHorario;
+        int idCedula;
         public AsignarTurno()
         {
             InitializeComponent();
         }
 
-        DataSet dsPaciente;
+                //public void LlenarComboBox()
+        //{
+        //    Turno turno = new Turno();
+        //    string valorItem = null;
+        //    dsPaciente = turno.dsObtenerCedula();
 
-        public void LlenarComboBox()
-        {
-            Turno turno = new Turno();
-            string valorItem = null;
-            dsPaciente = turno.dsObtenerCedula();
+        //    for (int i = 0; i <= (dsPaciente.Tables[0].Rows.Count - 1); i++)
+        //    {
+        //        valorItem = Convert.ToString(dsPaciente.Tables[0].Rows[i][0]);
+        //        //cmbCedula.Items.Add(valorItem);
+        //    }
 
-            for (int i = 0; i <= (dsPaciente.Tables[0].Rows.Count - 1); i++)
-            {
-                valorItem = Convert.ToString(dsPaciente.Tables[0].Rows[i][0]);
-                //cmbCedula.Items.Add(valorItem);
-            }
-
-        }
+        //}
 
         public void LlenarTablaTurno()
         { 
@@ -46,7 +46,7 @@ namespace ISII
         {
 
             txtTurno.Text = System.DateTime.Now.ToShortDateString();
-            LlenarComboBox();
+         //   LlenarComboBox();
         }
 
         
@@ -57,59 +57,57 @@ namespace ISII
 
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+         
+            if (e.KeyChar == 13)
             {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
+                string strCedu = Convert.ToString(txtCedula.Text);
+                txtNombre.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]);
+                txtApellido.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);    
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-         
-            //Cedula Combo
-            //string strCedu = Convert.ToString(cmbCedula.SelectedItem);
-            //Cedula Texto
-            string strCedu = Convert.ToString(txtCedula.Text);
-            conID.obtenerIdPaciente(strCedu);
-            int idCedula = Convert.ToInt32(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][0]);
-            MessageBox.Show("ID"+idCedula);
-            
 
-            //Llenar Turno
-            Turno turno = new Turno();
-            turno.IdPaciente = idCedula;
-            turno.DtFechaAsignada = dtFecha.Value;
-            turno.StrHoraAsignada = cmbHora.Text;
-            turno.DtFechaEmisionComprobante = System.DateTime.Now.Date;
-            turno.insertarTurno();
-            
-            
-            //Obtener ID Turno
+            if (txtHora.Text.Length ==0 || txtCedula.Text.Length ==0)
+            {
+                MessageBox.Show("Llenar todos los campos");
+
+            }
+            else
+            {
+                
+                try
+                {
+                    string strCedu = Convert.ToString(txtCedula.Text);
+                    conID.obtenerIdPaciente(strCedu);
+                    idCedula = Convert.ToInt32(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][0]);
+
+                    //Llenar Turno
+                    Turno turno = new Turno();
+                    turno.IdPaciente = idCedula;
+                    turno.DtFechaAsignada = dtFecha.Value;
+                    turno.StrHoraAsignada = txtHora.Text;
+                    turno.DtFechaEmisionComprobante = System.DateTime.Now.Date;
+                    turno.insertarTurno();
+
+
+                    //ActualizarHorario
+                    conID.actualizarHorario(idHorario);
+
+                    MessageBox.Show("Turno asignado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("Ingresar CEDULA");
+                }
+
 
                 
+            }   
         }
 
         
-        private void txtCedula_Enter(object sender, EventArgs e)
-        {
-            
-            string strCedu = Convert.ToString(txtCedula.Text);
-            txtNombre.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]);
-            txtApellido.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);
-        }
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             dgTurnosDisponibles.AutoGenerateColumns = true;
@@ -122,7 +120,9 @@ namespace ISII
         private void dgTurnosDisponibles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            txtHora.Text = dgTurnosDisponibles.CurrentRow.Cells[1].Value.ToString();
+            txtHora.Text = dgTurnosDisponibles.CurrentRow.Cells[2].Value.ToString();
+            idHorario = Convert.ToInt32(dgTurnosDisponibles.CurrentRow.Cells[0].Value);
+            
         }
 
        

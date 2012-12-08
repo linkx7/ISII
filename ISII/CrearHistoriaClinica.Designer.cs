@@ -33,13 +33,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCedula = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
-            this.txtTipoSangre = new System.Windows.Forms.TextBox();
+            this.txtCedula = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtAlergias = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -93,18 +93,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Paciente";
             // 
-            // groupBox2
+            // txtNombres
             // 
-            this.groupBox2.Controls.Add(this.txtAlergias);
-            this.groupBox2.Controls.Add(this.txtTipoSangre);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(25, 144);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(280, 111);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos";
+            this.txtNombres.Location = new System.Drawing.Point(101, 52);
+            this.txtNombres.Name = "txtNombres";
+            this.txtNombres.Size = new System.Drawing.Size(166, 20);
+            this.txtNombres.TabIndex = 5;
             // 
             // txtCedula
             // 
@@ -113,20 +107,20 @@
             this.txtCedula.Size = new System.Drawing.Size(166, 20);
             this.txtCedula.TabIndex = 4;
             this.txtCedula.Enter += new System.EventHandler(this.txtCedula_Enter);
+            this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
-            // txtNombres
+            // groupBox2
             // 
-            this.txtNombres.Location = new System.Drawing.Point(101, 52);
-            this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(166, 20);
-            this.txtNombres.TabIndex = 5;
-            // 
-            // txtTipoSangre
-            // 
-            this.txtTipoSangre.Location = new System.Drawing.Point(125, 28);
-            this.txtTipoSangre.Name = "txtTipoSangre";
-            this.txtTipoSangre.Size = new System.Drawing.Size(125, 20);
-            this.txtTipoSangre.TabIndex = 3;
+            this.groupBox2.Controls.Add(this.cmbTipo);
+            this.groupBox2.Controls.Add(this.txtAlergias);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(25, 144);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(280, 111);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Datos";
             // 
             // txtAlergias
             // 
@@ -154,6 +148,23 @@
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
+            "O -",
+            "O +",
+            "A -",
+            "A +",
+            "B -",
+            "B +",
+            "AB -",
+            "AB +"});
+            this.cmbTipo.Location = new System.Drawing.Point(123, 27);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(126, 21);
+            this.cmbTipo.TabIndex = 5;
             // 
             // CrearHistoriaClinica
             // 
@@ -185,8 +196,8 @@
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.TextBox txtAlergias;
-        private System.Windows.Forms.TextBox txtTipoSangre;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ComboBox cmbTipo;
     }
 }

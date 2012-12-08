@@ -201,7 +201,7 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(120, 104);
+            this.txtId.Location = new System.Drawing.Point(110, 104);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 17;
@@ -231,6 +231,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RegistrarHorario";
             this.Text = "Registrar Horario";
+            this.Load += new System.EventHandler(this.RegistrarHorario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgMedicos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
