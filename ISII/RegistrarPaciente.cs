@@ -161,5 +161,18 @@ namespace ISII
             }
         }
 
+        private void txtApellidos_TextChanged(object sender, EventArgs e)
+        {
+            if (validar.verificarTexto(txtApellidos.Text) == false)
+            {
+                erValidaciones.SetError(txtApellidos, "Solo ingresar TEXTO");
+                txtApellidos.Text = "";
+            }
+            else
+            {
+                erValidaciones.SetError(txtApellidos, "");
+            }
+        }
+
     }//Fin clase
 }

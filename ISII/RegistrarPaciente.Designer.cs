@@ -124,6 +124,7 @@
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(141, 20);
             this.txtApellidos.TabIndex = 7;
+            this.txtApellidos.TextChanged += new System.EventHandler(this.txtApellidos_TextChanged);
             this.txtApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // txtDireccion
@@ -141,7 +142,6 @@
             this.txtTelefono.Size = new System.Drawing.Size(141, 20);
             this.txtTelefono.TabIndex = 9;
             this.txtTelefono.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
-            
             // 
             // btnRegistrar
             // 
