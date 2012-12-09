@@ -96,18 +96,28 @@ namespace ISII
         {
             if ((txtCedula.Text.Length != 0) && (txtNombres.Text.Length != 0) && (txtApellidos.Text.Length != 0))
             {
-                Paciente paciente = new Paciente();
-                paciente.StrCedulaPaciente = txtCedula.Text;
-                paciente.StrNombresPaciente = txtNombres.Text;
-                paciente.StrApellidosPaciente = txtApellidos.Text;
-                paciente.StrDireccionPaciente = txtDireccion.Text;
-                paciente.StrEstadoCivilPaciente = (cmbEstadoCivil.Items[cmbEstadoCivil.SelectedIndex].ToString());
-                paciente.StrTelefonoPaciente = txtTelefono.Text;
-                paciente.StrEmailPaciente = txtEmail.Text;
-                paciente.StrSexoPaciente = (cmbSexo.Items[cmbEstadoCivil.SelectedIndex].ToString());
-                paciente.DtFechaNacimiento = dtFechaNacimiento.Value;
-                paciente.insertarCliente();
-                MessageBox.Show("Paciente Registrado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try {
+
+                    Paciente paciente = new Paciente();
+                    paciente.StrCedulaPaciente = txtCedula.Text;
+                    paciente.StrNombresPaciente = txtNombres.Text;
+                    paciente.StrApellidosPaciente = txtApellidos.Text;
+                    paciente.StrDireccionPaciente = txtDireccion.Text;
+                    paciente.StrEstadoCivilPaciente = (cmbEstadoCivil.Items[cmbEstadoCivil.SelectedIndex].ToString());
+                    paciente.StrTelefonoPaciente = txtTelefono.Text;
+                    paciente.StrEmailPaciente = txtEmail.Text;
+                    paciente.StrSexoPaciente = (cmbSexo.Items[cmbSexo.SelectedIndex].ToString());
+                    paciente.DtFechaNacimiento = dtFechaNacimiento.Value;
+                    paciente.insertarCliente();
+                    btnSiguiente.Visible=true;
+                    MessageBox.Show("Paciente Registrado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch(Exception ex)
+                
+                {
+                    MessageBox.Show("Error de Registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                
             }
 
 
@@ -171,6 +181,12 @@ namespace ISII
             {
                 erValidaciones.SetError(txtApellidos, "");
             }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            CrearHistoriaClinica historia = new CrearHistoriaClinica();
+            historia.Show();
         }
 
     }//Fin clase

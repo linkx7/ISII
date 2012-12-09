@@ -24,27 +24,53 @@ namespace ISII
             string strCedu = Convert.ToString(txtCedula.Text);
             conID.obtenerIdPaciente(strCedu);
             int idCedula = Convert.ToInt32(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][0]);
-           
-            //Llenar HL
-            HistoriaClinica hl = new HistoriaClinica();
-            hl.IdPaciente = idCedula;
-            hl.StrTipoSangre = Convert.ToString(cmbTipo.SelectedItem);
-            hl.StrAlergia = txtAlergias.Text;
-            hl.insertarHistoria();
+
+            if (Convert.ToInt32(conID.verificarHistoria(idCedula).Tables[0].Rows[0][0]) == 0)
+            {
+                MessageBox.Show("Historia Clinica ya existente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+
+                try
+                {
+                    //Llenar HL
+                    HistoriaClinica hl = new HistoriaClinica();
+                    hl.IdPaciente = idCedula;
+                    hl.StrTipoSangre = Convert.ToString(cmbTipo.SelectedItem);
+                    hl.StrAlergia = txtAlergias.Text;
+                    hl.insertarHistoria();
+                    MessageBox.Show("Historia Clinica asignado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Campos Erroneos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
-        private void txtCedula_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
+     
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                string strCedu = Convert.ToString(txtCedula.Text);
-                txtNombres.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]) +" "+ Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);
+                
+                try 
+                {
+                    string strCedu = Convert.ToString(txtCedula.Text);
+                    txtNombres.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]) + " " + Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);
+                
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Paciente no registrado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -113,12 +113,44 @@ namespace DAT
             { throw err; }
         }
 
+        public DataSet verificarHistoria(int idPaciente) 
+        {
+            try
+            {
+                conexionS();
+                strSentencia = " select COUNT(*) from HISTORIACLINICA where IDPACIENTE='" + idPaciente + "'";
+                sdaAdap = new SqlDataAdapter(strSentencia, sqlCone);
+                sdaAdap.Fill(dsResultado, "paciente");
+                cerrarConexion();
+                return dsResultado;
+            }
+            catch (Exception err)
+            { throw err; }
+        
+        }
+
+        public DataSet obtenerIdHistoria(String strCedula)
+        {
+            try
+            {
+                conexionS();
+                strSentencia = "select hc.IDHISTORIACLINICA from PACIENTE p join HISTORIACLINICA hc on p.IDPACIENTE = hc.IDPACIENTE where p.CEDULAPACIENTE ='" + strCedula + "'";
+                sdaAdap = new SqlDataAdapter(strSentencia, sqlCone);
+                sdaAdap.Fill(dsResultado, "paciente");
+                cerrarConexion();
+                return dsResultado;
+            }
+            catch (Exception err)
+            { throw err; }
+        
+        }
+
         public DataSet obtenerIdPaciente(String strCedula)
         {
             try
             {
                 conexionS();
-                strSentencia = "select idPaciente,nombresPaciente,apellidosPaciente from paciente where cedulaPaciente='" + strCedula + "'";
+                strSentencia = "select IDPACIENTE,NOMBRESPACIENTE,APELLIDOSPACIENTE from PACIENTE where CEDULAPACIENTE ='" + strCedula + "'";
                 sdaAdap = new SqlDataAdapter(strSentencia, sqlCone);
                 sdaAdap.Fill(dsResultado, "paciente");
                 cerrarConexion();
@@ -191,21 +223,56 @@ namespace DAT
             
         }
 
-        //public DataSet obtenerHorario(DateTime dtFecha)
-        //{
-        //    //try
-        //    //{   
-        //    //    conexionS();
-        //    //    strSentencia = "select idPaciente,nombresPaciente,apellidosPaciente from paciente where cedulaPaciente='" + strCedula + "'";
-        //    //    sdaAdap = new SqlDataAdapter(strSentencia, sqlCone);
-        //    //    sdaAdap.Fill(dsResultado, "paciente");
-        //    //    cerrarConexion();
-        //    //    return dsResultado;
-        //    //}
-        //    //catch (Exception err)
-        //    //{ throw err; }
-        //}
 
+        public void insertarUsuario(string strUsuario, string strPass)
+        {
+            try
+            {
+                conexionS();
+                strSentencia = "insert into LOGIN values('" + strUsuario + "','" + strPass + "')";
+                objCommand = new SqlCommand(strSentencia, sqlCone);
+                objCommand.CommandType = CommandType.Text;
+                objCommand.ExecuteNonQuery();
+                cerrarConexion();
+
+            }
+            catch (Exception ex) { throw ex; };
+        }
+
+        public void insertarHojaAtencion(int idTurno, int idHistoria, DateTime dtAtencion, string strSintomas, string strDiagnostico, string strPres)
+        {
+            try
+            {
+                conexionS();
+                strSentencia = "insert into HOJAATENCION values('" + idTurno + "','" + idHistoria + "','" + dtAtencion + "','" + strSintomas + "','" + strDiagnostico + "','" + strPres + "')";
+                objCommand = new SqlCommand(strSentencia, sqlCone);
+                objCommand.CommandType = CommandType.Text;
+                objCommand.ExecuteNonQuery();
+                cerrarConexion();
+
+            }
+            catch (Exception ex) { throw ex; };
+        }
+
+        public DataTable listarPacientes()
+        {
+            string SentenciaSQL = "select IDPACIENTE as '# PACIENTE', CEDULAPACIENTE as 'CEDULA',NOMBRESPACIENTE as 'NOMBRES',APELLIDOSPACIENTE AS 'APELLIDOS',DIRECCIONPACIENTE AS 'DIRECCION',ESTADOCIVILPACIENTE AS 'ESTADO CIVIL',TELEFONOPACIENTE AS 'TELEFONO',EMAILPACIENTE AS'EMAIL',SEXOPACIENTE AS 'SEXO',FECHANACIMIENTO AS 'FECHA NACIMIENTO' from PACIENTE p";
+            DataTable consulta = new DataTable("PACIENTE");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, sqlCone);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
+
+        public DataTable listarTurnos()
+        {
+            string SentenciaSQL = "select t.IDTURNO as '# TURNO',p.IDPACIENTE as '# PACIENTE', (t.FECHAASIGNADA+' '+t.HORAASIGNADA) as 'FECHA TURNO',(p.NOMBRESPACIENTE+' '+p.APELLIDOSPACIENTE) as 'PACIENTE' from TURNO t join PACIENTE p on t.IDPACIENTE=p.IDPACIENTE";
+            DataTable consulta = new DataTable("TURNO");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, sqlCone);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
 
     } //fin conexión
 }

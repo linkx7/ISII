@@ -18,7 +18,7 @@ namespace ISII
             get { return idMedico; }
             set { idMedico = value; }
         }
-        
+
         private int extensionMedico;
 
         public int ExtensionMedico
@@ -128,7 +128,7 @@ namespace ISII
 
         public DataTable buscarMedicoPorCI(MedicoServicio med)
         {
-            string SentenciaSQL = "select M.IDMEDICO, M.NOMBRESMEDICO,M.APELLIDOSMEDICO,e.NOMBREESPECIALIDAD from ESPECIALIDAD e join MEDICO m on e.IDESPECIALIDAD=m.IDESPECIALIDAD where CEDULAMEDICO=" + "'" + med.strCedulaMedico + "'";
+            string SentenciaSQL = "select M.IDMEDICO as 'Nº', M.NOMBRESMEDICO as 'NOMBRES',M.APELLIDOSMEDICO as 'APELLIDOS',e.NOMBREESPECIALIDAD as 'ESPECIALIDAD',m.estadoMedico as 'ESTADO' from ESPECIALIDAD e join MEDICO m on e.IDESPECIALIDAD=m.IDESPECIALIDAD where CEDULAMEDICO=" + "'" + med.strCedulaMedico + "'";
             DataTable consulta = new DataTable("Medico");
             var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
             objAdapter.Fill(consulta);
@@ -139,7 +139,7 @@ namespace ISII
 
         public DataTable listarMedicos()
         {
-            string SentenciaSQL = "select M.IDMEDICO, M.NOMBRESMEDICO,M.APELLIDOSMEDICO,e.NOMBREESPECIALIDAD from ESPECIALIDAD e join MEDICO m on e.IDESPECIALIDAD=m.IDESPECIALIDAD";
+            string SentenciaSQL = "select M.IDMEDICO as 'Nº', M.NOMBRESMEDICO as 'NOMBRES',M.APELLIDOSMEDICO as 'APELLIDOS',e.NOMBREESPECIALIDAD as 'ESPECIALIDAD',m.estadoMedico as 'ESTADO' from ESPECIALIDAD e join MEDICO m on e.IDESPECIALIDAD=m.IDESPECIALIDAD";
             DataTable consulta = new DataTable("Medico");
             var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
             objAdapter.Fill(consulta);
@@ -147,6 +147,15 @@ namespace ISII
             return consulta;
         }
 
+        public DataTable listarMedicosDisponibles()
+        {
+            string SentenciaSQL = "select M.IDMEDICO as 'Nº', M.NOMBRESMEDICO as 'NOMBRES',M.APELLIDOSMEDICO as 'APELLIDOS',e.NOMBREESPECIALIDAD as 'ESPECIALIDAD',m.estadoMedico as 'ESTADO' from ESPECIALIDAD e join MEDICO m on e.IDESPECIALIDAD=m.IDESPECIALIDAD where m.estadoMedico='Disponible'";
+            DataTable consulta = new DataTable("Medico");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
         public void eliminarMedico(int idMedico)
         {
 
@@ -157,15 +166,45 @@ namespace ISII
                 eliminarMedico.Parameters.AddWithValue("idMedico", idMedico);
 
                 eliminarMedico.ExecuteNonQuery();
-                MessageBox.Show("Medico Eliminado!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Médico Eliminado!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException Ex)
             {
-                MessageBox.Show("Error no se elimino el medico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error no se elimino el médico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
         }
+
+        public void ExportarDataGridViewExcel(DataGridView grd)
+        {
+            SaveFileDialog fichero = new SaveFileDialog();
+            fichero.Filter = "Excel (*.xls)|*.xls";
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel.Application aplicacion;
+                Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
+                Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
+                aplicacion = new Microsoft.Office.Interop.Excel.Application();
+                libros_trabajo = aplicacion.Workbooks.Add();
+                hoja_trabajo =
+                    (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                //Recorremos el DataGridView rellenando la hoja de trabajo
+                for (int i = 0; i < grd.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < grd.Columns.Count; j++)
+                    {
+                        hoja_trabajo.Cells[i + 1, j + 1] = grd.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                libros_trabajo.SaveAs(fichero.FileName,
+                    Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                libros_trabajo.Close(true);
+                MessageBox.Show("Reporte Creado!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                aplicacion.Quit();
+            }
+        }
+
 
 
     }

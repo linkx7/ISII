@@ -42,6 +42,7 @@ namespace BLL
                 Conexion objConexion = new Conexion();
                 objConexion.conexionS();
                 objConexion.insertarHistoria(idPaciente,strTipoSangre,strAlergia);
+                
             }
             catch (Exception ex) { throw ex; }
 

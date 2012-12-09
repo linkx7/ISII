@@ -48,8 +48,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbEstadoCivil = new System.Windows.Forms.ComboBox();
             this.dtFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.erValidaciones = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSiguiente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.erValidaciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,27 +58,27 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Cedula";
+            this.label1.Text = "Cédula:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.label2.Text = "Nombres:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(10, 115);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Apellido";
+            this.label3.Text = "Apellidos:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
@@ -86,24 +86,24 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(10, 153);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Dirección";
+            this.label4.Text = "Dirección:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(10, 213);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Teléfono";
+            this.label5.Text = "Teléfono:";
             // 
             // txtCedula
             // 
             this.txtCedula.Location = new System.Drawing.Point(110, 37);
             this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(141, 20);
+            this.txtCedula.Size = new System.Drawing.Size(166, 20);
             this.txtCedula.TabIndex = 5;
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -111,7 +111,7 @@
             // 
             this.txtNombres.Location = new System.Drawing.Point(110, 75);
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(141, 20);
+            this.txtNombres.Size = new System.Drawing.Size(166, 20);
             this.txtNombres.TabIndex = 6;
             this.txtNombres.TextChanged += new System.EventHandler(this.txtNombres_TextChanged);
             this.txtNombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
@@ -120,7 +120,7 @@
             // 
             this.txtApellidos.Location = new System.Drawing.Point(110, 112);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(141, 20);
+            this.txtApellidos.Size = new System.Drawing.Size(166, 20);
             this.txtApellidos.TabIndex = 7;
             this.txtApellidos.TextChanged += new System.EventHandler(this.txtApellidos_TextChanged);
             this.txtApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
@@ -129,7 +129,7 @@
             // 
             this.txtDireccion.Location = new System.Drawing.Point(110, 150);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(141, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(166, 20);
             this.txtDireccion.TabIndex = 8;
             this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
@@ -137,15 +137,15 @@
             // 
             this.txtTelefono.Location = new System.Drawing.Point(110, 210);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(141, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(166, 20);
             this.txtTelefono.TabIndex = 9;
             this.txtTelefono.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(15, 373);
+            this.btnRegistrar.Location = new System.Drawing.Point(12, 364);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrar.Size = new System.Drawing.Size(102, 31);
             this.btnRegistrar.TabIndex = 10;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
@@ -156,15 +156,15 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(10, 248);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Email";
+            this.label6.Text = "Email:";
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(110, 249);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(141, 20);
+            this.txtEmail.Size = new System.Drawing.Size(166, 20);
             this.txtEmail.TabIndex = 14;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
@@ -231,26 +231,27 @@
             this.dtFechaNacimiento.Size = new System.Drawing.Size(200, 20);
             this.dtFechaNacimiento.TabIndex = 22;
             // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(128, 373);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(70, 22);
-            this.btnSalir.TabIndex = 23;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
-            // 
             // erValidaciones
             // 
             this.erValidaciones.ContainerControl = this;
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Location = new System.Drawing.Point(168, 364);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(108, 32);
+            this.btnSiguiente.TabIndex = 24;
+            this.btnSiguiente.Text = "Avanzar";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Visible = false;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // RegistrarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 408);
-            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.dtFechaNacimiento);
             this.Controls.Add(this.cmbEstadoCivil);
             this.Controls.Add(this.label9);
@@ -300,7 +301,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbEstadoCivil;
         private System.Windows.Forms.DateTimePicker dtFechaNacimiento;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ErrorProvider erValidaciones;
+        private System.Windows.Forms.Button btnSiguiente;
     }
 }

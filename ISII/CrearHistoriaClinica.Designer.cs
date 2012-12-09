@@ -36,10 +36,10 @@
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtAlergias = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -106,7 +106,6 @@
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(166, 20);
             this.txtCedula.TabIndex = 4;
-            this.txtCedula.Enter += new System.EventHandler(this.txtCedula_Enter);
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
             // groupBox2
@@ -121,6 +120,23 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
+            "O -",
+            "O +",
+            "A -",
+            "A +",
+            "B -",
+            "B +",
+            "AB -",
+            "AB +"});
+            this.cmbTipo.Location = new System.Drawing.Point(123, 27);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(126, 21);
+            this.cmbTipo.TabIndex = 5;
             // 
             // txtAlergias
             // 
@@ -148,23 +164,7 @@
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // cmbTipo
-            // 
-            this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Items.AddRange(new object[] {
-            "O -",
-            "O +",
-            "A -",
-            "A +",
-            "B -",
-            "B +",
-            "AB -",
-            "AB +"});
-            this.cmbTipo.Location = new System.Drawing.Point(123, 27);
-            this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.Size = new System.Drawing.Size(126, 21);
-            this.cmbTipo.TabIndex = 5;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // CrearHistoriaClinica
             // 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace ISII
 {
@@ -75,6 +76,37 @@ namespace ISII
             {
                 MessageBox.Show("Error, no se ingreso el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+        }
+        public DataTable listarHorarios()
+        {
+            string SentenciaSQL = "select h.idHorario as '# TURNO',h.Fecha as 'FECHA TURNO', (m.NOMBRESMEDICO+' '+m.APELLIDOSMEDICO) as 'MÉDICO', e.nombreEspecialidad as 'ESPECIALIDAD', h.estado as 'ESTADO' from HORARIO h join MEDICO m on h.IDMEDICO=m.IDMEDICO join ESPECIALIDAD e on e.IDESPECIALIDAD=m.IDESPECIALIDAD";
+            DataTable consulta = new DataTable("Horario");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
+
+        public DataTable listarHorariosDisponibles()
+        {
+            string SentenciaSQL = "select h.idHorario as '# TURNO',h.Fecha as 'FECHA TURNO', (m.NOMBRESMEDICO+' '+m.APELLIDOSMEDICO) as 'MÉDICO', e.nombreEspecialidad as 'ESPECIALIDAD', h.estado as 'ESTADO' from HORARIO h join MEDICO m on h.IDMEDICO=m.IDMEDICO join ESPECIALIDAD e on e.IDESPECIALIDAD=m.IDESPECIALIDAD where h.estado='Disponible'";
+            DataTable consulta = new DataTable("Horario");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
+
+        public DataTable listarHorariosOcupados()
+        {
+            string SentenciaSQL = "select h.idHorario as '# TURNO',h.Fecha as 'FECHA TURNO', (m.NOMBRESMEDICO+' '+m.APELLIDOSMEDICO) as 'MÉDICO', e.nombreEspecialidad as 'ESPECIALIDAD', h.estado as 'ESTADO' from HORARIO h join MEDICO m on h.IDMEDICO=m.IDMEDICO join ESPECIALIDAD e on e.IDESPECIALIDAD=m.IDESPECIALIDAD where h.estado='Ocupado'";
+            DataTable consulta = new DataTable("Horario");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
         }
     }
 }

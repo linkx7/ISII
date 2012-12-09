@@ -60,9 +60,16 @@ namespace ISII
          
             if (e.KeyChar == 13)
             {
-                string strCedu = Convert.ToString(txtCedula.Text);
-                txtNombre.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]);
-                txtApellido.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);    
+                try {
+                    string strCedu = Convert.ToString(txtCedula.Text);
+                    txtNombre.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][1]);
+                    txtApellido.Text = Convert.ToString(conID.obtenerIdPaciente(strCedu).Tables[0].Rows[0][2]);
+                    btnAsignar.Visible = true;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Paciente no registrado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -96,8 +103,7 @@ namespace ISII
                     conID.actualizarHorario(idHorario);
                     int idTurno = Convert.ToInt32(conID.obtenerIdTurno().Tables[0].Rows[0][0]);
                     MessageBox.Show("Turno asignado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("ID"+idTurno);
-                }
+                    }
                 catch (Exception ex) {
                     MessageBox.Show("Ingresar CEDULA");
                 }
@@ -130,9 +136,16 @@ namespace ISII
 
         private void dgTurnosDisponibles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try 
+            {
+                txtHora.Text = dgTurnosDisponibles.CurrentRow.Cells[2].Value.ToString();
+                idHorario = Convert.ToInt32(dgTurnosDisponibles.CurrentRow.Cells[0].Value);
             
-            txtHora.Text = dgTurnosDisponibles.CurrentRow.Cells[2].Value.ToString();
-            idHorario = Convert.ToInt32(dgTurnosDisponibles.CurrentRow.Cells[0].Value);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Consultar Turnos Disponibles", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             
         }
 

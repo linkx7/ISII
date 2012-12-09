@@ -106,7 +106,7 @@ namespace ISII
 
                 }
             }
-            catch (SqlException Ex)
+            catch (SqlException Exp)
             {
                 MessageBox.Show("Error SQL", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -114,6 +114,28 @@ namespace ISII
 
             return especialidad.IdEspecialidad;
         }
+
+        public DataTable listarEspecialidadPorMedico()
+        {
+            string SentenciaSQL = "select e.IDESPECIALIDAD as '# ESPECIALIDAD',m.IDMEDICO as 'ID MEDICO', e.NOMBREESPECIALIDAD as 'ESPECIALIDAD', (m.NOMBRESMEDICO+' '+m.APELLIDOSMEDICO) as 'MEDICO' from especialidad e join medico m on e.idEspecialidad=m.IDESPECIALIDAD";
+            DataTable consulta = new DataTable("EspecialidadPorMedico");
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
+
+        public DataTable listarEspecialidad()
+        {
+
+            DataTable consulta = new DataTable("Especialidades");
+            string SentenciaSQL = "select e.IDESPECIALIDAD as '# ESPECIALIDAD', e.NOMBREESPECIALIDAD as 'NOMBRE' from especialidad e";
+            var objAdapter = new SqlDataAdapter(SentenciaSQL, conexionBDD);
+            objAdapter.Fill(consulta);
+            objAdapter.SelectCommand.CommandText = SentenciaSQL;
+            return consulta;
+        }
+
 
     }
 }

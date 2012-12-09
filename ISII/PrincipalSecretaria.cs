@@ -64,15 +64,18 @@ namespace ISII
             registrarHorario.Show();
         }
 
-        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConsultarMedico consultarMedico = new ConsultarMedico();
-            consultarMedico.Show();
-        }
-
+       
         private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            FrmLogin login = new FrmLogin();
+            login.Show();
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes reportes = new Reportes();
+            reportes.Show();
         }
     }
 }

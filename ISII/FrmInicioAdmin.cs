@@ -15,5 +15,23 @@ namespace ISII
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegistrarUsuario regUsuario = new RegistrarUsuario();
+            regUsuario.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmLogin login = new FrmLogin();
+            login.Show();
+        }
     }
 }
