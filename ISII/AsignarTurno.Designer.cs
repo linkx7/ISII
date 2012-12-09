@@ -61,7 +61,7 @@
             this.groupBox1.Controls.Add(this.lblFecha);
             this.groupBox1.Location = new System.Drawing.Point(12, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(401, 150);
+            this.groupBox1.Size = new System.Drawing.Size(491, 150);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Consultar turnos";
@@ -115,7 +115,7 @@
             this.groupBox2.Controls.Add(this.dgTurnosDisponibles);
             this.groupBox2.Location = new System.Drawing.Point(12, 182);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(401, 149);
+            this.groupBox2.Size = new System.Drawing.Size(491, 172);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Turnos";
@@ -127,7 +127,7 @@
             this.dgTurnosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTurnosDisponibles.Location = new System.Drawing.Point(9, 19);
             this.dgTurnosDisponibles.Name = "dgTurnosDisponibles";
-            this.dgTurnosDisponibles.Size = new System.Drawing.Size(380, 116);
+            this.dgTurnosDisponibles.Size = new System.Drawing.Size(476, 147);
             this.dgTurnosDisponibles.TabIndex = 0;
             this.dgTurnosDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTurnosDisponibles_CellContentClick);
             // 
@@ -151,9 +151,9 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtCedula);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 337);
+            this.groupBox3.Location = new System.Drawing.Point(12, 367);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(401, 162);
+            this.groupBox3.Size = new System.Drawing.Size(485, 162);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Paciente";
@@ -189,7 +189,7 @@
             this.txtTurno.Location = new System.Drawing.Point(84, 85);
             this.txtTurno.Name = "txtTurno";
             this.txtTurno.ReadOnly = true;
-            this.txtTurno.Size = new System.Drawing.Size(114, 20);
+            this.txtTurno.Size = new System.Drawing.Size(141, 20);
             this.txtTurno.TabIndex = 9;
             // 
             // lblFechaActual
@@ -207,7 +207,7 @@
             this.txtNombre.Location = new System.Drawing.Point(84, 56);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
-            this.txtNombre.Size = new System.Drawing.Size(114, 20);
+            this.txtNombre.Size = new System.Drawing.Size(141, 20);
             this.txtNombre.TabIndex = 7;
             // 
             // label3
@@ -224,7 +224,7 @@
             this.txtCedula.Location = new System.Drawing.Point(84, 26);
             this.txtCedula.MaxLength = 10;
             this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(114, 20);
+            this.txtCedula.Size = new System.Drawing.Size(141, 20);
             this.txtCedula.TabIndex = 5;
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
@@ -232,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 557);
+            this.ClientSize = new System.Drawing.Size(548, 557);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

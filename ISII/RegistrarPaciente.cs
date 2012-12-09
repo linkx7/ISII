@@ -94,10 +94,9 @@ namespace ISII
         
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if ((txtCodigo.Text.Length != 0) && (txtCedula.Text.Length != 0) && (txtNombres.Text.Length != 0) && (txtApellidos.Text.Length != 0))
+            if ((txtCedula.Text.Length != 0) && (txtNombres.Text.Length != 0) && (txtApellidos.Text.Length != 0))
             {
                 Paciente paciente = new Paciente();
-                paciente.StrCodigoPaciente = txtCodigo.Text;
                 paciente.StrCedulaPaciente = txtCedula.Text;
                 paciente.StrNombresPaciente = txtNombres.Text;
                 paciente.StrApellidosPaciente = txtApellidos.Text;

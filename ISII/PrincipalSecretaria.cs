@@ -42,7 +42,8 @@ namespace ISII
 
         private void registrarHojaDeAtencionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            RegistrarHojaAtencion regHoja = new RegistrarHojaAtencion();
+            regHoja.Show();
         }
 
         private void registrarMédicoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,6 +68,11 @@ namespace ISII
         {
             ConsultarMedico consultarMedico = new ConsultarMedico();
             consultarMedico.Show();
+        }
+
+        private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

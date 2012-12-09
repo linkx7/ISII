@@ -135,6 +135,12 @@
     <Compile Include="RegistrarEspecialidad.Designer.cs">
       <DependentUpon>RegistrarEspecialidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarHojaAtencion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarHojaAtencion.Designer.cs">
+      <DependentUpon>RegistrarHojaAtencion.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarHorario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrarEspecialidad.resx">
       <DependentUpon>RegistrarEspecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarHojaAtencion.resx">
+      <DependentUpon>RegistrarHojaAtencion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarHorario.resx">
       <DependentUpon>RegistrarHorario.cs</DependentUpon>

@@ -37,11 +37,11 @@ namespace DAT
 
 
         //Paciente
-        public void insertarPaciente(string strCodigoPaciente, string strCedulaP, string strNombresPaciente, string strApellidosPaciente, string strDireccionPaciente, string strEstadoCivilPaciente, string strTelefonoPaciente, string strEmailPaciente, string strSexoPaciente, DateTime dtFechaNacimiento)
+        public void insertarPaciente(string strCedulaP, string strNombresPaciente, string strApellidosPaciente, string strDireccionPaciente, string strEstadoCivilPaciente, string strTelefonoPaciente, string strEmailPaciente, string strSexoPaciente, DateTime dtFechaNacimiento)
         {
             try
             {
-                strSentencia = "insert into paciente(CODIGOPACIENTE,CEDULAPACIENTE,NOMBRESPACIENTE,APELLIDOSPACIENTE,DIRECCIONPACIENTE,ESTADOCIVILPACIENTE,TELEFONOPACIENTE,EMAILPACIENTE,SEXOPACIENTE,FECHANACIMIENTO) values('" + strCodigoPaciente + "','" + strCedulaP + "','" + strNombresPaciente + "','" + strApellidosPaciente + "','" + strDireccionPaciente + "','" + strEstadoCivilPaciente + "','" + strTelefonoPaciente + "','" + strEmailPaciente + "','" + strSexoPaciente + "','" + dtFechaNacimiento + "')";
+                strSentencia = "insert into paciente(CEDULAPACIENTE,NOMBRESPACIENTE,APELLIDOSPACIENTE,DIRECCIONPACIENTE,ESTADOCIVILPACIENTE,TELEFONOPACIENTE,EMAILPACIENTE,SEXOPACIENTE,FECHANACIMIENTO) values('" + strCedulaP + "','" + strNombresPaciente + "','" + strApellidosPaciente + "','" + strDireccionPaciente + "','" + strEstadoCivilPaciente + "','" + strTelefonoPaciente + "','" + strEmailPaciente + "','" + strSexoPaciente + "','" + dtFechaNacimiento + "')";
                 objCommand = new SqlCommand(strSentencia, sqlCone);
                 objCommand.CommandType = CommandType.Text;
                 objCommand.ExecuteNonQuery();
@@ -128,6 +128,17 @@ namespace DAT
             { throw err; }
         }
 
+        public DataSet obtenerIdTurno()
+        {
+            conexionS();
+            strSentencia = "select top 1 idturno from TURNO order by IDTURNO desc";
+            sdaAdap = new SqlDataAdapter(strSentencia, sqlCone);
+            sdaAdap.Fill(dsResultado,"turno");
+            cerrarConexion();
+            return dsResultado;
+
+        }
+
 
         public void insertarTurno(int idPaciente, DateTime dtFechaAsignada, string strHoraAsignada, DateTime dtFechaEmision)
         {
@@ -158,20 +169,7 @@ namespace DAT
             catch (Exception ex) { throw ex; };
         }
 
-        public DataSet obtenerIdTurno() //SI
-        {
-            try
-            {
-                strSentencia = "select IDTURNO from TURNO order by IDTURNO desc";
-                sdaAdap = new SqlDataAdapter(strSentencia, sqlCone);
-                sdaAdap.Fill(dsResultado, "paciente");
-                cerrarConexion();
-                return dsResultado;
-            }
-            catch (Exception err)
-            { throw err; }
-        }
-
+       
         public DataTable listarTurnos(DateTime dtFecha)
         {
             conexionS();

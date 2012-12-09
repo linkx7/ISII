@@ -38,22 +38,28 @@ namespace ISII
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            medS.StrApellidosMedico = txtApellidos.Text;
-            medS.StrCedulaMedico = txtCedula.Text;
-            medS.StrCodigoMedico = txtCodigo.Text;
-            medS.StrDireccionMedico = txtDireccion.Text;
-            medS.StrEmailMedico = txtEmail.Text;
-            medS.StrEstadoCMedico = (cmbEstadoCivil.Items[cmbEstadoCivil.SelectedIndex].ToString());
-            medS.StrSexoMedico = (cmbSexo.Items[cmbSexo.SelectedIndex].ToString());
-            medS.StrNombresMedico = txtNombres.Text;
-            medS.ExtensionMedico = Convert.ToInt32(txtExtension.Text);
-            esp.DescripcionEsp = cmbEspecialidad.Items[cmbEspecialidad.SelectedIndex].ToString();
-            esp.conexionS();
-            esp.IdEspecialidad = esp.obtenerIdEspecialidad(esp);
-            esp.cerrarConexion();
-            medS.IniciarConexion();
-            medS.InsertarMedico(medS, esp);
-            medS.CerrarConexion();
+            try {
+                medS.StrApellidosMedico = txtApellidos.Text;
+                medS.StrCedulaMedico = txtCedula.Text;
+                medS.StrDireccionMedico = txtDireccion.Text;
+                medS.StrEmailMedico = txtEmail.Text;
+                medS.StrEstadoCMedico = (cmbEstadoCivil.Items[cmbEstadoCivil.SelectedIndex].ToString());
+                medS.StrSexoMedico = (cmbSexo.Items[cmbSexo.SelectedIndex].ToString());
+                medS.StrNombresMedico = txtNombres.Text;
+                medS.ExtensionMedico = Convert.ToInt32(txtExtension.Text);
+                esp.DescripcionEsp = cmbEspecialidad.Items[cmbEspecialidad.SelectedIndex].ToString();
+                esp.conexionS();
+                esp.IdEspecialidad = esp.obtenerIdEspecialidad(esp);
+                esp.cerrarConexion();
+                medS.IniciarConexion();
+                medS.InsertarMedico(medS, esp);
+                medS.CerrarConexion();
+       
+            }
+            catch(Exception ex){
+                MessageBox.Show("Llenar todos los campos");
+            }
+        
         }
 
         private void RegistrarMedico_Load_1(object sender, EventArgs e)

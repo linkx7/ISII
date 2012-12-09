@@ -53,15 +53,22 @@ namespace ISII
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            medS.IdMedico = Convert.ToInt32(txtId.Text);
-            horario.Fecha = Convert.ToDateTime(dateTimeFecha.Text);
-            if (dateTimeHora.Value.Minute < 10)
+            try
+            {
+                medS.IdMedico = Convert.ToInt32(txtId.Text);
+                horario.Fecha = Convert.ToDateTime(dateTimeFecha.Text);
+                if (dateTimeHora.Value.Minute < 10)
                     horario.Hora = dateTimeHora.Value.Hour.ToString() + ":0" + dateTimeHora.Value.Minute.ToString();
                 else
                     horario.Hora = dateTimeHora.Value.Hour.ToString() + ":" + dateTimeHora.Value.Minute.ToString();
-            horario.conexionS();
-            horario.insertarHorario(horario, medS);
-            horario.cerrarConexion();
+                horario.conexionS();
+                horario.insertarHorario(horario, medS);
+                horario.cerrarConexion();
+            }
+            catch (Exception ex){
+                MessageBox.Show("Lenar todos los campos");
+            }
+
         }
 
         private void cmbBuscar_SelectedIndexChanged(object sender, EventArgs e)

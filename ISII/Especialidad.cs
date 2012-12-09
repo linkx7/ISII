@@ -106,7 +106,7 @@ namespace ISII
 
                 }
             }
-            catch (SqlException Exp)
+            catch (SqlException Ex)
             {
                 MessageBox.Show("Error SQL", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

@@ -94,14 +94,25 @@ namespace ISII
 
                     //ActualizarHorario
                     conID.actualizarHorario(idHorario);
-
+                    int idTurno = Convert.ToInt32(conID.obtenerIdTurno().Tables[0].Rows[0][0]);
                     MessageBox.Show("Turno asignado con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MessageBox.Show("ID"+idTurno);
                 }
                 catch (Exception ex) {
                     MessageBox.Show("Ingresar CEDULA");
                 }
 
+
+                //DATOS DE CORREO
+                /*
+                 IDTurno: idTurno
+                 Nombre: txtNombre.Text
+                 Apellido: txtApellido.Text
+                 Fecha:dtFecha.Value
+                 Hora: txtHora.Text
+                  
+                                 
+                 */
 
                 
             }   

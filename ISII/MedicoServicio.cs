@@ -18,13 +18,7 @@ namespace ISII
             get { return idMedico; }
             set { idMedico = value; }
         }
-        private string strCodigoMedico;
-
-        public string StrCodigoMedico
-        {
-            get { return strCodigoMedico; }
-            set { strCodigoMedico = value; }
-        }
+        
         private int extensionMedico;
 
         public int ExtensionMedico
@@ -111,8 +105,7 @@ namespace ISII
             {
 
                 SqlCommand insertarMedico =
-                new SqlCommand("insert into MEDICO (IDESPECIALIDAD,CODIGOMEDICO,EXTMEDICO,CEDULAMEDICO,NOMBRESMEDICO,APELLIDOSMEDICO,DIRECCIONMEDICO,ESTADOCIVILMEDICO,EMAILMEDICO,SEXOMEDICO,ESTADOMEDICO) values (@idEsp,@cod,@ext,@cedula,@nombres,@apellidos,@direccion,@estadoC,@email,@sexo,@estadoMedico)", conexionBDD);
-                insertarMedico.Parameters.AddWithValue("cod", medico.StrCodigoMedico);
+                new SqlCommand("insert into MEDICO (IDESPECIALIDAD,EXTMEDICO,CEDULAMEDICO,NOMBRESMEDICO,APELLIDOSMEDICO,DIRECCIONMEDICO,ESTADOCIVILMEDICO,EMAILMEDICO,SEXOMEDICO,ESTADOMEDICO) values (@idEsp,@ext,@cedula,@nombres,@apellidos,@direccion,@estadoC,@email,@sexo,@estadoMedico)", conexionBDD);
                 insertarMedico.Parameters.AddWithValue("ext", medico.extensionMedico);
                 insertarMedico.Parameters.AddWithValue("nombres", medico.strNombresMedico);
                 insertarMedico.Parameters.AddWithValue("apellidos", medico.strApellidosMedico);

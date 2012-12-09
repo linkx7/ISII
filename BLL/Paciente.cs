@@ -99,7 +99,7 @@ namespace BLL
             {
                 Conexion objConexion = new Conexion();
                 objConexion.conexionS();
-                objConexion.insertarPaciente(strCodigoPaciente, strCedulaPaciente, strNombresPaciente, strApellidosPaciente, strDireccionPaciente, strEstadoCivilPaciente, strTelefonoPaciente, strEmailPaciente, strSexoPaciente, dtFechaNacimiento);
+                objConexion.insertarPaciente(strCedulaPaciente, strNombresPaciente, strApellidosPaciente, strDireccionPaciente, strEstadoCivilPaciente, strTelefonoPaciente, strEmailPaciente, strSexoPaciente, dtFechaNacimiento);
 
             }
             catch (Exception ex) { throw ex; }

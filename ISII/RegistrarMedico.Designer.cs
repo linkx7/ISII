@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbEstadoCivil = new System.Windows.Forms.ComboBox();
             this.cmbSexo = new System.Windows.Forms.ComboBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
@@ -50,15 +48,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cmbEspecialidad = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Código";
             // 
             // label2
             // 
@@ -156,13 +145,6 @@
             this.cmbSexo.Size = new System.Drawing.Size(121, 21);
             this.cmbSexo.TabIndex = 10;
             // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(118, 34);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo.TabIndex = 11;
-            // 
             // txtNombres
             // 
             this.txtNombres.Location = new System.Drawing.Point(118, 62);
@@ -246,7 +228,6 @@
             this.Controls.Add(this.txtCedula);
             this.Controls.Add(this.txtApellidos);
             this.Controls.Add(this.txtNombres);
-            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.cmbSexo);
             this.Controls.Add(this.cmbEstadoCivil);
             this.Controls.Add(this.label9);
@@ -257,7 +238,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "RegistrarMedico";
             this.Text = "Registrar Médico";
             this.Load += new System.EventHandler(this.RegistrarMedico_Load_1);
@@ -268,7 +248,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -279,7 +258,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbEstadoCivil;
         private System.Windows.Forms.ComboBox cmbSexo;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.TextBox txtCedula;
